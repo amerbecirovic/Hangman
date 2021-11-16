@@ -29,13 +29,13 @@ export function GuessedLetters(props) {
         <div className="guessedletters">
             <form onSubmit={handleSubmitLetter}>
                 <label>Guess a letter:</label>
-                <input id="guessletter" type="text" maxLength="1" pattern="[A-Za-z]{1}" onChange={handleChangeLetter} />
+                <input id="guessletter" type="text" maxLength="1" pattern="[A-Za-z]{1}" onChange={handleChangeLetter} required />
                 <br></br>
                 <input type="submit" value="Submit Letter"></input>
             </form>
             <form onSubmit={handleSubmitWord}>
                 <label>Guess the word:</label>
-                <input id="guessword" type="text" minLength="3" maxLength="20" onChange={handleChangeWord} />
+                <input id="guessword" type="text" minLength="3" maxLength="20" onChange={handleChangeWord} required />
                 <br></br>
                 <input type="submit" value="Submit Word"></input>
             </form>

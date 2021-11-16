@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Man } from '../Man/Man';
 import { Word } from '../Word/Word';
 import { GuessedLetters } from '../GuessedLetters/GuessedLetters';
@@ -41,12 +41,16 @@ function App() {
   const handleSubmitLetter = (letter) => {
     setGuessedLetters([...guessedLetters, letter]);
     document.getElementById('guessletter').value='';
-}
+  }
 
-const handleSubmitWord = (word) => {
+  const handleSubmitWord = (word) => {
     setGuessedWords([...guessedWords, word]);
     document.getElementById('guessword').value='';
-}
+  }
+
+  useEffect(() => {
+    fetchWord();
+  }, []);
 
   return (
     <div className="App">
@@ -65,7 +69,9 @@ const handleSubmitWord = (word) => {
       />
       <Word 
         word={word} 
-        fetchWord={fetchWord} 
+        fetchWord={fetchWord}
+        guessedLetters={guessedLetters}
+        guessedWords={guessedWords} 
         setGuessedLetters={setGuessedLetters}
         setGuessedWords={setGuessedWords}
       />
@@ -74,6 +80,7 @@ const handleSubmitWord = (word) => {
         handleSubmitLetter={handleSubmitLetter}
         guessedWords={guessedWords}
         handleSubmitWord={handleSubmitWord}
+        word={word}
       />
     </div>
   );
