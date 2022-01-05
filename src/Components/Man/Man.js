@@ -1,6 +1,6 @@
 import './Man.css';
 import React from 'react';
-
+//look into double letter word breaking hangman image
 export function Man(props) {
     const renderHangman = (guesses) => {
         let image;

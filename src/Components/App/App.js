@@ -6,15 +6,15 @@ import { GuessedLetters } from '../GuessedLetters/GuessedLetters';
 
 function App() {
 
-  const [word, setWord] = useState('');
   const [difficulty, setDifficulty] = useState('easy');
+  const [word, setWord] = useState('');
+  
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [guessedWords, setGuessedWords] = useState([]);
 
   const handleChangeDifficulty = (e) => {
     setDifficulty(e.target.value);
-    fetchWord();
   }
 
   const handleSubmitLetter = (letter) => {
@@ -30,6 +30,7 @@ function App() {
   const fetchWord = () => {
     let wordLengthMin = 3;
     let wordLengthMax;
+    
     if(difficulty === 'easy') {
       wordLengthMax = 5;
     }
@@ -41,8 +42,9 @@ function App() {
       wordLengthMin = 9;
       wordLengthMax = 20;
     }
+    
     const randomWords = require('random-words');
-    let word = randomWords();
+    let word = '';
     while(word.length < wordLengthMin || word.length > wordLengthMax) {
       word = randomWords();
     }
@@ -50,7 +52,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchWord();
+    fetchWord(difficulty);
   }, []);
 
   return (
