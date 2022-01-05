@@ -12,6 +12,21 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [guessedWords, setGuessedWords] = useState([]);
 
+  const handleChangeDifficulty = (e) => {
+    setDifficulty(e.target.value);
+    fetchWord();
+  }
+
+  const handleSubmitLetter = (letter) => {
+    setGuessedLetters([...guessedLetters, letter]);
+    document.getElementById('guessletter').value='';
+  }
+
+  const handleSubmitWord = (word) => {
+    setGuessedWords([...guessedWords, word]);
+    document.getElementById('guessword').value='';
+  }
+
   const fetchWord = () => {
     let wordLengthMin = 3;
     let wordLengthMax;
@@ -34,27 +49,13 @@ function App() {
     setWord(word);
   }
 
-  const handleChangeDifficulty = (e) => {
-    setDifficulty(e.target.value);
-  }
-
-  const handleSubmitLetter = (letter) => {
-    setGuessedLetters([...guessedLetters, letter]);
-    document.getElementById('guessletter').value='';
-  }
-
-  const handleSubmitWord = (word) => {
-    setGuessedWords([...guessedWords, word]);
-    document.getElementById('guessword').value='';
-  }
-
   useEffect(() => {
     fetchWord();
   }, []);
 
   return (
     <div className="App">
-      <h1>Hangman</h1>
+      <h1>Amer's Hangman</h1>
       <form onChange={handleChangeDifficulty}>
         <label>Select difficulty:</label>
         <select name="difficulty" id="difficulty">
@@ -63,7 +64,10 @@ function App() {
           <option value="hard">Hard</option>
         </select>
       </form>
+      <br></br>
+      <br></br>
       <Man
+        word = {word}
         guessedLetters={guessedLetters}
         guessedWords={guessedWords}
       />

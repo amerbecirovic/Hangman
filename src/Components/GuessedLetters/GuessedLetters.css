@@ -1,0 +1,21 @@
+.guessedletters {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 320px;
+    padding: 20px;
+}
+
+#guessletter {
+    width: 80px;
+}
+
+#guessword {
+    width: 80px;
+}
