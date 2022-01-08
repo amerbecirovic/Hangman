@@ -12,6 +12,11 @@ form {
     padding: 20px;
 }
 
+.submit {
+    color: black;
+    background-color: rgb(192, 55, 66);
+}
+
 #guessletter {
     width: 80px;
 }
